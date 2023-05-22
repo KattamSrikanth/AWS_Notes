@@ -1,9 +1,9 @@
 
 # AWS Practical Assignments
-============================
+
 
 ## 1. EC2 Instance Creation
-============================
+
 - Created an **IAM** user (admin) with EC2 full Access permission.
 - created Group "admingroup" and assigned EC2 full access permissions.
 - logged in with admin user and launched EC2 instance with default configuration.
@@ -29,7 +29,7 @@
 
 
 # AWS Notes:
-============
+
 ## IAM - IDENTITY AND ACCESS MANAGEMENT
 - IAM is Global region
 - Login credentials or Login ID are created uniquely across global and same user ID cannot be created under any region as IAM falls under Global Region.
@@ -62,7 +62,7 @@
 * Access Advisor tab under Users screen ?
 
 # Elastic Cloud Compute (EC2)
-============================
+
 ## Amazon Machine Image: OS, AWS offers all the possible OS for selection during instance creation.
 
 ## Instance Type:
@@ -85,7 +85,7 @@
 
 
 # Virtual Private cloud (VPC)
-=============================
+
 Works as on-prem VPN. Entire infrastructure/architecture of an application lies under VPC which is a security fence to the entire cloud stack.
 
 - Subnets: private and public subnets 
@@ -96,7 +96,7 @@ Works as on-prem VPN. Entire infrastructure/architecture of an application lies 
 - Security Groups: to define inbound and outbound rules
 
 # Elastic Load Balancer (ELB)
-=============================
+
 - ELB are client facing with public IP address.
 - ELB shares the load coming from various equally to the configured nodes
 
@@ -127,7 +127,7 @@ Works as on-prem VPN. Entire infrastructure/architecture of an application lies 
 * Auto Scaling >> Launch Configurations (Template instance) >> Auto Scaling Groups
 
 # Simple Storage Service (S3):
-============================
+
  - S3 - Regional service, stored data within multiple AZs within same region
  - S3 is charged for retrieval/transactions performed on the data but not on the storage.
 
