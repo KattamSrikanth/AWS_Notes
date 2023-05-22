@@ -62,3 +62,86 @@
 * Identity center in User creation screen (not covered)
 * Access Advisor tab under Users screen ?
 
+# Elastic Cloud Compute (EC2)
+============================
+## Amazon Machine Image: OS, AWS offers all the possible OS for selection during instance creation.
+
+## Instance Type:
+### T2.nono, t2.micro etc hardware varies
+
+- Private key file format:
+ -- .pem: OpenSSH
+ ---.ppk : for use with puTTY
+
+* Once the keypair of an instance is lost/forgot, we will never be able to login to the instance. 
+* Key pair is specific to a Region.
+
+* Security Group: acts like a fence to a house.
+* Volume: Harddisk
+
+* Public IP is assigned by default - it will change whenever instance is rebooted/restarted
+
+- Actions menu:
+ -- Modify volume
+
+
+# Virtual Private cloud (VPC)
+=============================
+Works as on-prem VPN. Entire infrastructure/architecture of an application lies under VPC which is a security fence to the entire cloud stack.
+
+- Subnets: private and public subnets 
+- Internet gateway: used to route to public subnets
+- Route Tables: switch to route the access to either Public or private subnet.
+ -- Public route table --- add Internet Gateway
+ -- Private route table --- route table without Internet Gateway
+- Security Groups: to define inbound and outbound rules
+
+# Elastic Load Balancer (ELB)
+=============================
+- ELB are client facing with public IP address.
+- ELB shares the load coming from various equally to the configured nodes
+
+- Types of Load Balancers:
+ --Application : handles HTTP/HTTPS traffic of a web application, operating at the request level
+ -- Network: High performance and static IP address of an application, operating at the connection level
+ -- Classic: when application running on EC2 classic network (Previous Generation)
+ -- Gateway: Newly launched, used for managing home appliances.
+	
+- These Load balancers are further categorized into:
+ -- Internet facing : Nodes work on Public IP Address. Route requests from clients over internet
+ -- Internal: Nodes work on the private IP Address. Route requests from clients with access to VPC
+	
+- Statefull sticky sessions vs Stateless sessions
+- Sticky sessions stick onto a specific instance for any specific set of users. 
+
+* Cross-zone load balancing allows equal load balancing among the nodes belong to different Azs. i.e. When Cross-zone LB is enabled, it distributes traffic evenly across all registered instances in all enabled Azs.
+
+**Auto Scaling Group: ** 
+- Collection of similar configured EC2 instances logically grouped for scaling automatically.
+- Increase the instances when on demand and decrease the instances when low demand.
+ -- Auto scaling group manages EC2 capacity automatically.
+ -- Template instance is configured and the same will be launched/terminated based on configuration specified to meet the demand
+
+- **Target Groups**: Load balancers routes requests to the targets in a target group and performs health checks on the targets
+
+* Load Balacers >> Target Groups (Health checks)
+* Auto Scaling >> Launch Configurations (Template instance) >> Auto Scaling Groups
+
+# Simple Storage Service (S3):
+============================
+ - S3 - Regional service, stored data within multiple AZs within same region
+ - S3 is charged for retrieval/transactions performed on the data but not on the storage.
+
+* Can save upto 5 TB per file (object) and 
+* can create 100 Buckets per AWS Account (can request for more if required), 
+* 5 GB per PUT request.
+* Files in S3 are encrypted by default
+* Every file uploaded/stored in S3 are treated as Object
+
+- S3 storage Classes:
+ -- S3-Standard: 
+ -- S3- Intelligent Archive (frequently unaccessed files will be archived), we can set the archive days (say 30 days etc).
+ -- So all files that were not accessed in last 30 days will be stored in S3-IA (less pricing than S3-standard) which helps save cost.
+
+- Server Access Logging: Auditing on all S3 files in a bucket.
+?? S3 with blocked public access is not charged?
